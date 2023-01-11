@@ -1,15 +1,26 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+import Book from './Book';
+import '../App';
 
-const BookList = () => {
+export default function BookList() {
 
-	const books = () => {
-		// get json of books and write them into MultiActionAreaCard
-		// then add this list into this component.
-	}
+	const [books, setBooks] = useState([]);
+
+	useEffect(() => {
+		axios.get("https://example-data.draftbit.com/books?_limit=50")
+		.then(res => { 
+			console.log(res.data)
+			setBooks(res.data)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}, [])
 
 	return (
-		<div>BookList</div>
+		<div className='book-list'>
+			{ books.map( book => <Book book={ book } /> ) }
+		</div>
 	)
 }
-
-export default BookList

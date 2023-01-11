@@ -7,18 +7,18 @@ import { CardActionArea, CardActions } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { AddCard } from "@mui/icons-material";
 
-export default function Book() {
+
+export default function Book(props) {
   return (
-    <Card sx={{ width: 350, height: 400 }}>
+    <Card sx={{ maxWidth: 350, maxHeight: 400, margin: 2 }}>
       <CardActionArea>
-        <CardMedia component="img" height="140" image="" alt="green iguana" />
+        <CardMedia component="img" height="140" image={ props.book["image_url"] } alt="green iguana" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            { props.book["title"] }
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+		  { props.book["description"] }
           </Typography>
         </CardContent>
       </CardActionArea>

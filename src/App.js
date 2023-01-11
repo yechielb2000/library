@@ -1,6 +1,6 @@
 import './App.css';
-import SearchAppBar from './components/SearchAppBar';
 import { Route, Routes } from 'react-router-dom'
+import SearchAppBar from './components/SearchAppBar';
 import BookList from './components/BookList';
 import Book from './components/Book';
 
@@ -8,7 +8,7 @@ import Book from './components/Book';
 
 function App() {
   return (
-   <div className='app'>
+   <div>
 	<SearchAppBar/>
 		<Routes>
 			<Route path="/" element={ <BookList/> }/>
