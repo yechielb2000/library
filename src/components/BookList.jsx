@@ -1,9 +1,15 @@
 import React from 'react'
 
 const BookList = () => {
-  return (
-	<div>BookList</div>
-  )
+
+	const books = () => {
+		// get json of books and write them into MultiActionAreaCard
+		// then add this list into this component.
+	}
+
+	return (
+		<div>BookList</div>
+	)
 }
 
 export default BookList
