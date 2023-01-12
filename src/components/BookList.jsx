@@ -3,12 +3,14 @@ import axios from 'axios';
 import Book from './Book';
 import '../App';
 
+const API_URL = "https://example-data.draftbit.com/books?_limit=150"
+
 export default function BookList() {
 
 	const [books, setBooks] = useState([]);
 
 	useEffect(() => {
-		axios.get("https://example-data.draftbit.com/books?_limit=50")
+		axios.get(API_URL)
 		.then(res => { 
 			console.log(res.data)
 			setBooks(res.data)
