@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+book_scheme.js
 
 # production
 /build

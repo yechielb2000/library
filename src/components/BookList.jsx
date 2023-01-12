@@ -1,15 +1,27 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import Grid from '@mui/material/Grid';
+import axios from 'axios';
+import Book from './Book';
 
-const BookList = () => {
+const API_URL = "https://example-data.draftbit.com/books?_limit=150"
 
-	const books = () => {
-		// get json of books and write them into MultiActionAreaCard
-		// then add this list into this component.
-	}
+export default function BookList() {
+
+	const [books, setBooks] = useState([]);
+
+	useEffect(() => {
+		axios.get(API_URL)
+		.then(res => setBooks(res.data))
+		.catch(err => console.log(err))
+	}, [])
 
 	return (
-		<div>BookList</div>
+		<Grid 
+		    container
+			direction="row"
+			justifyContent="space-evenly"
+			alignItems="flex-start">
+			{ books.map( book => <Book book={ book } /> ) }
+		</Grid>
 	)
 }
-
-export default BookList
