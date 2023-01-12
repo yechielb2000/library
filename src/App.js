@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 import SearchAppBar from './components/SearchAppBar';
 import BookList from './components/BookList';
 import Book from './components/Book';

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import Book from './Book';
-import '../App';
 
 const API_URL = "https://example-data.draftbit.com/books?_limit=150"
 
@@ -21,8 +20,7 @@ export default function BookList() {
 		    container
 			direction="row"
 			justifyContent="space-evenly"
-			alignItems="flex-start"
-		>
+			alignItems="flex-start">
 			{ books.map( book => <Book book={ book } /> ) }
 		</Grid>
 	)
