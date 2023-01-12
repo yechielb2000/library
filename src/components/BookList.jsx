@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Grid from '@mui/material/Grid';
 import axios from 'axios';
 import Book from './Book';
 import '../App';
@@ -11,18 +12,18 @@ export default function BookList() {
 
 	useEffect(() => {
 		axios.get(API_URL)
-		.then(res => { 
-			console.log(res.data)
-			setBooks(res.data)
-		})
-		.catch(err => {
-			console.log(err)
-		})
+		.then(res => setBooks(res.data))
+		.catch(err => console.log(err))
 	}, [])
 
 	return (
-		<div className='book-list'>
+		<Grid 
+		    container
+			direction="row"
+			justifyContent="space-evenly"
+			alignItems="flex-start"
+		>
 			{ books.map( book => <Book book={ book } /> ) }
-		</div>
+		</Grid>
 	)
 }
