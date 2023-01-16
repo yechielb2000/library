@@ -10,15 +10,10 @@ export default function Bar() {
 
 	return (
 		<Box>
-			<AppBar sx={{
-				backgroundColor: "#006600" // Green
-				}}
+			<AppBar sx={{ backgroundColor: "green" }}
 				position="static">
 				<Toolbar>
-					<Typography
-						variant="h4"
-						sx={{ display: { xs: 'none', sm: 'block' } }}
-					>
+					<Typography variant="h4">
 						Book Library
 					</Typography>
 					<Search/>
