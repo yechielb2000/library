@@ -3,8 +3,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { BookScheme } from "../bookScheme";
@@ -21,14 +19,10 @@ export default function BookInfo({ open, handleClose, book }) {
 
   return (
     <Dialog fullWidth open={open} onClose={handleClose}>
-      <DialogTitle align="center">{book[BookScheme.title]}</DialogTitle>
-      <DialogContent
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <DialogTitle align="center" variant="black">
+        {book[BookScheme.title]}
+      </DialogTitle>
+      <DialogContent sx={{ display: "flex", flexDirection: "row" }}>
         <Box
           sx={{
             display: "flex",
@@ -42,35 +36,25 @@ export default function BookInfo({ open, handleClose, book }) {
             src={book[BookScheme.image_url]}
             alt={book[BookScheme.title]}
           />
-          <Typography variant="body2" color="inherit" align="center">
+          <DialogContentText variant="body2" color="black">
             {book[BookScheme.authors]}
-          </Typography>
+          </DialogContentText>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "left",
-            alignContent: "left",
-            width: "60%",
-          }}
-        >
-          <Typography variant="body1" color="inherit">
-            Description :
-          </Typography>
-          <Typography
+        <Box sx={{ width: "60%" }}>
+          <DialogContentText variant="black">Description :</DialogContentText>
+          <DialogContentText
             sx={{ overflowY: "auto", height: "300px" }}
             variant="body2"
-            color="inherit"
+            color="black"
           >
             {book[BookScheme.description]}
-          </Typography>
+          </DialogContentText>
         </Box>
       </DialogContent>
       <Divider />
-      <Typography variant="subtitle1" color="inherit" align="center">
+      <DialogContentText variant="subtitle1" color="inherit" align="center">
         {shortest_quote()}
-      </Typography>
+      </DialogContentText>
       <DialogActions>
         <Button onClick={handleClose}>Close</Button>
       </DialogActions>
