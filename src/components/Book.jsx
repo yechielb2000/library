@@ -8,43 +8,60 @@ import { CardActionArea, CardActions } from "@mui/material";
 import { AddCard, DoneRounded } from "@mui/icons-material";
 import { BookScheme } from "../bookScheme";
 
-export default function Book(props) {
+export default function Book({ book }) {
+  const [open, setOpen] = useState(false);
 
-	return (
-		<Card sx={{
-			width: 250,
-			height: 350,
-			margin: '10px',
-			display: 'flex',
-			flexDirection: 'column',
-			alignItems: 'flex-end',
-		}}>
-			<CardActionArea>
-				<CardMedia
-					sx={{
-						height: 280,
-						objectFit: 'fill'
-					}}
-					component="img"
-					src={props.book[BookScheme.image_url]}
-					alt={props.book[BookScheme.title]} />
-				<CardContent sx={{
-					marginTop: '10px',
-					padding: '0px',
-					textAlign: "center",
-					fontWeight: 900
-				}}>
-					{props.book[BookScheme.title]}
-				</CardContent>
-			</CardActionArea>
-			<CardActions sx={{ padding: '5px' }}>
-				<IconButton color="inherit" onClick={() => alert("hi")}>
-					<DoneRounded />
-				</IconButton>
-				<IconButton color="inherit" onClick={() => alert("hi")}>
-					<AddCard />
-				</IconButton>
-			</CardActions>
-		</Card>
-	);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  return (
+    <>
+      <BookInfo open={open} handleClose={handleClose} book={book} />
+      <Card
+        sx={{
+          width: 250,
+          height: 350,
+          margin: "10px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+        }}
+      >
+        <CardActionArea onClick={handleOpen}>
+          <CardMedia
+            sx={{
+              height: 280,
+              objectFit: "fill",
+            }}
+            component="img"
+            src={book[BookScheme.image_url]}
+            alt={book[BookScheme.title]}
+          />
+          <CardContent
+            sx={{
+              marginTop: "10px",
+              padding: "0px",
+              textAlign: "center",
+              fontWeight: 900,
+            }}
+          >
+            {book[BookScheme.title]}
+          </CardContent>
+        </CardActionArea>
+        <CardActions sx={{ padding: "5px" }}>
+          <IconButton color="inherit" onClick={() => alert("hi")}>
+            <DoneRounded />
+          </IconButton>
+          <IconButton color="inherit" onClick={() => alert("hi")}>
+            <AddCard />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </>
+  );
 }
