@@ -8,7 +8,7 @@ function App() {
    <>
 	<Bar/>
 		<Routes>
-			<Route path="/" element={ <BookList/> }/>
+			<Route path="/library" element={ <BookList/> }/>
 			<Route path="/book/:name" element= { <Book/> }/>
 			<Route path="/favorites" element= { <BookList/> }/>
 			<Route path="/done" element= { <BookList/> }/>	
