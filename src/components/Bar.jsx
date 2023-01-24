@@ -14,7 +14,7 @@ export default function Bar() {
     <Box>
       <AppBar sx={{ backgroundColor: "green" }} position="static">
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant="h4">Book Library</Typography>
+          <Typography variant="h4">Library App</Typography>
           <ButtonGroup>
             <Button variant="white" onClick={() => navigate("/library")}>
               Explore
