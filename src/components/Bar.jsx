@@ -16,7 +16,7 @@ export default function Bar() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h4">Book Library</Typography>
           <ButtonGroup>
-            <Button variant="white" onClick={() => navigate("/")}>
+            <Button variant="white" onClick={() => navigate("/library")}>
               Explore
             </Button>
             <Button variant="white" onClick={() => navigate("/favorites")}>
