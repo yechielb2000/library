@@ -21,6 +21,7 @@ jobs:
           target: 'gh-pages'
 
 permissions:
+    contents: read
     actions: write
     pull-requests: write
     
