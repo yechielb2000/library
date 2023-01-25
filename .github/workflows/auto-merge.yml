@@ -19,3 +19,8 @@ jobs:
           github_token: ${{ github.token }}
           source: 'main'
           target: 'gh-pages'
+
+permissions:
+    actions: write
+    pull-requests: write
+    
