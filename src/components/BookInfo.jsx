@@ -8,10 +8,30 @@ import {
   DialogActions,
   Dialog,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { BookScheme } from "../bookScheme";
-import "./BookInfo.css";
 
+const useStyles = makeStyles({
+  scrollBar: {
+    "&::-webkit-scrollbar": {
+      width: "20px",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 5px grey",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      background: "black",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: "rgb(54, 56, 58)",
+    },
+  },
+});
 export default function BookInfo({ open, handleClose, book }) {
+  const styles = useStyles();
+
   const shortest_quote = () => {
     return [
       book[BookScheme.quote1],
@@ -53,6 +73,7 @@ export default function BookInfo({ open, handleClose, book }) {
             <DialogContentText variant="black">Description :</DialogContentText>
             <DialogContentText
               sx={{ overflowY: "auto", height: "300px" }}
+              className={styles.scrollBar}
               variant="body2"
               color="black"
             >
