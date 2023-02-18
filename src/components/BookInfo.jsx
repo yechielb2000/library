@@ -5,8 +5,25 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { BookScheme } from "../bookScheme";
+import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
+import CloseIcon from "@mui/icons-material/Close";
+
+import { BookScheme } from "../bookScheme";
+import { Typography } from "@mui/material";
+
+export const BoldText = ({ children }) => {
+  return (
+    <Typography
+      component="span"
+      sx={{
+        fontWeight: 600,
+      }}
+    >
+      {children}
+    </Typography>
+  );
+};
 
 export default function BookInfo({ open, handleClose, book }) {
   const shortest_quote = () => {
@@ -19,42 +36,62 @@ export default function BookInfo({ open, handleClose, book }) {
 
   return (
     <Dialog fullWidth open={open} onClose={handleClose}>
-      <DialogTitle align="center" variant="black">
-        {book[BookScheme.title]}
-      </DialogTitle>
-      <DialogContent sx={{ display: "flex", flexDirection: "row" }}>
-        <Box
+      <DialogTitle sx={{ m: 0, p: 2 }}>
+        {book[BookScheme.title]}{" "}
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "40%",
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
           }}
         >
-          <img
-            width="200vh"
-            src={book[BookScheme.image_url]}
-            alt={book[BookScheme.title]}
-          />
-          <DialogContentText variant="body2" color="black">
-            {book[BookScheme.authors]}
-          </DialogContentText>
-        </Box>
-        <Box sx={{ width: "60%" }}>
-          <DialogContentText variant="black">Description :</DialogContentText>
-          <DialogContentText
-            sx={{ overflowY: "auto", height: "300px" }}
-            variant="body2"
-            color="black"
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      <DialogContent dividers>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "40%",
+            }}
           >
-            {book[BookScheme.description]}
-          </DialogContentText>
+            <img
+              width="200vh"
+              src={book[BookScheme.image_url]}
+              alt={book[BookScheme.title]}
+            />
+            <DialogContentText variant="body2" color="black">
+              {book[BookScheme.authors]}
+            </DialogContentText>
+          </Box>
+          <Box sx={{ width: "60%" }}>
+            <BoldText>Description :</BoldText>
+            <DialogContentText
+              sx={{ overflowY: "auto", height: "300px" }}
+              variant="body2"
+              color="black"
+            >
+              {book[BookScheme.description]}
+            </DialogContentText>
+          </Box>
         </Box>
+        <Typography
+          variant="body2"
+          sx={{
+            mt: 1,
+          }}
+        >
+          <BoldText>Quote: </BoldText>
+          {shortest_quote()}
+        </Typography>
       </DialogContent>
       <Divider />
-      <DialogContentText variant="subtitle1" color="inherit" align="center">
-        {shortest_quote()}
-      </DialogContentText>
       <DialogActions>
         <Button onClick={handleClose}>Close</Button>
       </DialogActions>
