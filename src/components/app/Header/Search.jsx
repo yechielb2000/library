@@ -1,5 +1,5 @@
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
+import { InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchContainer = styled("div")(({ theme }) => ({

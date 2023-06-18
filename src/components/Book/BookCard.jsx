@@ -1,17 +1,19 @@
 import { useState } from "react";
-import useParams from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
-import BookInfo from "./BookInfo";
-import { CardActionArea, CardActions } from "@mui/material";
-import { AddCard, DoneRounded } from "@mui/icons-material";
-import { BookScheme } from "../bookScheme";
+import BookInfo from "./BookModal";
+import { AddCard, BookmarkAddOutlined, DoneRounded } from "@mui/icons-material";
+import {
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  CardActions,
+  IconButton,
+  Card,
+} from "@mui/material";
+import { useNavigate } from "react-router";
 
 export default function BookCard({ book }) {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleClose = () => {
     setOpen(false);
   };
@@ -40,8 +42,8 @@ export default function BookCard({ book }) {
               objectFit: "fill",
             }}
             component="img"
-            src={book[BookScheme.image_url]}
-            alt={book[BookScheme.title]}
+            src={book.image_url}
+            alt={book.title}
           />
           <CardContent
             sx={{
@@ -51,10 +53,13 @@ export default function BookCard({ book }) {
               fontWeight: 900,
             }}
           >
-            {book[BookScheme.title]}
+            {book.title}
           </CardContent>
         </CardActionArea>
         <CardActions sx={{ padding: "5px" }}>
+          <IconButton color="inherit" onClick={() => navigate(`#/book/${book.id}`)}>
+            <BookmarkAddOutlined />
+          </IconButton>
           <IconButton color="inherit" onClick={() => alert("hi")}>
             <DoneRounded />
           </IconButton>

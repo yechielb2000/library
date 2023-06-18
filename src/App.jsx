@@ -1,19 +1,17 @@
-import { Route, Routes } from 'react-router-dom';
-import Bar from './components/Bar';
-import BookList from './components/BookList';
-import Book from './components/BookCard';
+import { CssBaseline } from "@mui/material";
+import Header from "../src/components/app/Header";
+import Footer from "../src/components/app/Footer";
+import AppRouter from "./AppRouter";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-   <>
-	<Bar/>
-		<Routes>
-			<Route path="/library" element={ <BookList/> }/>
-			<Route path="/book/:name" element= { <Book/> }/>
-			<Route path="/favorites" element= { <BookList/> }/>
-			<Route path="/done" element= { <BookList/> }/>	
-		</Routes>
-   </>
+    <>
+      <CssBaseline />
+      <Header />
+      <AppRouter />
+      <Footer />
+    </>
   );
 }
 

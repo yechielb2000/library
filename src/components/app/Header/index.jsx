@@ -7,25 +7,23 @@ import Typography from "@mui/material/Typography";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 
-export default function Bar() {
-  const navigate = useNavigate();
+export default function Header() {
+  // const navigate = useNavigate();
 
   return (
-    <Box>
       <AppBar sx={{ backgroundColor: "green" }} position="static">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h4">Library App</Typography>
           <ButtonGroup>
-            <Button variant="white" onClick={() => navigate("/library")}>
+            <Button variant="white" onClick={() => {}}>
               Explore
             </Button>
-            <Button variant="white" onClick={() => navigate("/favorites")}>
+            <Button variant="white" onClick={() =>{}}>
               Favorites
             </Button>
           </ButtonGroup>
           <Search />
         </Toolbar>
       </AppBar>
-    </Box>
   );
 }

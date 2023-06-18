@@ -5,22 +5,17 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { BookScheme } from "../bookScheme";
 import Divider from "@mui/material/Divider";
 
 export default function BookInfo({ open, handleClose, book }) {
   const shortest_quote = () => {
-    return [
-      book[BookScheme.quote1],
-      book[BookScheme.quote2],
-      book[BookScheme.quote3],
-    ].sort()[0];
+    return [book.quote1, book.quote2, book.quote3].sort()[0];
   };
 
   return (
     <Dialog fullWidth open={open} onClose={handleClose}>
       <DialogTitle align="center" variant="black">
-        {book[BookScheme.title]}
+        {book.title}
       </DialogTitle>
       <DialogContent sx={{ display: "flex", flexDirection: "row" }}>
         <Box
@@ -31,13 +26,9 @@ export default function BookInfo({ open, handleClose, book }) {
             width: "40%",
           }}
         >
-          <img
-            width="200vh"
-            src={book[BookScheme.image_url]}
-            alt={book[BookScheme.title]}
-          />
+          <img width="200vh" src={book.image_url} alt={book.title} />
           <DialogContentText variant="body2" color="black">
-            {book[BookScheme.authors]}
+            {book.authors}
           </DialogContentText>
         </Box>
         <Box sx={{ width: "60%" }}>
@@ -47,7 +38,7 @@ export default function BookInfo({ open, handleClose, book }) {
             variant="body2"
             color="black"
           >
-            {book[BookScheme.description]}
+            {book.description}
           </DialogContentText>
         </Box>
       </DialogContent>
